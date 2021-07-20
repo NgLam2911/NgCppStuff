@@ -1,6 +1,13 @@
 // This code idea is use recursion => is not the best way to solve this.
 // INPUT: 5
 // OUTPUT:
+// 5 = 1 + 1 + 1 + 1 + 1
+// 5 = 1 + 1 + 1 + 2
+// 5 = 1 + 1 + 3
+// 5 = 1 + 2 + 2
+// 5 = 1 + 4
+// 5 = 2 + 3
+// 5 = 5
 
 
 #include <iostream>
