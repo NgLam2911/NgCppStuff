@@ -16,6 +16,7 @@ using namespace std;
 
 int n;
 int numbers[10000];
+int results = 0;
 
 int array_sum(int max_pos)
 {
@@ -38,26 +39,27 @@ void print(int max_pos)
 		}
 	}	
 	cout << endl;
+	results++;
 }
 
 void extract(int pos)
 {
-	for (int i = 1; i <= n; i++)
+	int a;
+	if (pos < 1) a = 1; else a = numbers[pos - 1];
+
+	for (int i = a; i <= n; i++)
 	{
-		if (i >= numbers[pos - 1])
+		numbers[pos] = i;
+		int check = array_sum(pos);
+		if (check < n)
 		{
-			numbers[pos] = i;
-			int check = array_sum(pos);
-			if (check < n)
+			extract(pos + 1);
+		}
+		else
+		{
+			if (check == n)
 			{
-				extract(pos + 1);
-			}
-			else
-			{
-				if (check == n)
-				{
-					print(pos);
-				}
+				print(pos);
 			}
 		}
 	}
@@ -69,6 +71,8 @@ int main()
 	cin >> n;
 
 	extract(0);
+
+	cout << "Printed " << results << " results";
 	return 0;
 }
 
